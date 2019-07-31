@@ -1,0 +1,40 @@
+
+Find the album titled "Vinicius De Moraes", and then use the relationship-provided method to find all its tracks.
+
+In [4]: Album.objects.get(title__icontains="Vinicius De Moraes").tracks.all()                                                                                                                                  
+Out[4]: <QuerySet [<Track: Track object (3073)>, <Track: Track object (3074)>, <Track: Track object (3064)>, <Track: Track object (3080)>, <Track: Track object (3079)>, <Track: Track object (3078)>, <Track: Track object (3077)>, <Track: Track object (3076)>, <Track: Track object (3075)>, <Track: Track object (3072)>, <Track: Track object (3071)>, <Track: Track object (3070)>, <Track: Track object (3069)>, <Track: Track object (3068)>, <Track: Track object (3067)>, <Track: Track object (3066)>, <Track: Track object (3065)>]>
+
+
+Find the artist called "Philip Glass Ensemble", and then use an relationship-provided method to find all their albums.
+
+In [6]: Artist.objects.filter(name__icontains="Philip Glass Ensemble").first().albums.all()                                                                                                                    
+Out[6]: <QuerySet [<Album: Koyaanisqatsi (Soundtrack from the Motion Picture)>]>
+
+
+Find the "Brazilian Music" playlist and then use an relationship-provided method to find all its tracks.
+
+In [10]: Playlist.objects.filter(name__icontains="Brazilian Music").first().tracks.all()                                                                                                                       
+Out[10]: <QuerySet [<Track: Track object (215)>, <Track: Track object (219)>, <Track: Track object (220)>, <Track: Track object (228)>, <Track: Track object (236)>, <Track: Track object (391)>, <Track: Track object (393)>, <Track: Track object (504)>, <Track: Track object (516)>, <Track: Track object (523)>, <Track: Track object (738)>, <Track: Track object (867)>, <Track: Track object (852)>, <Track: Track object (864)>, <Track: Track object (874)>, <Track: Track object (885)>, <Track: Track object (888)>, <Track: Track object (1088)>, <Track: Track object (1093)>, <Track: Track object (1099)>, '...(remaining elements truncated)...']>
+
+
+Find the "Jazz" genre and then use an relationship-provided method to find all its tracks.
+
+In [11]: Genre.objects.get(name="Jazz").tracks.all()                                                                                                                                                           
+Out[11]: <QuerySet [<Track: Track object (63)>, <Track: Track object (64)>, <Track: Track object (65)>, <Track: Track object (66)>, <Track: Track object (67)>, <Track: Track object (68)>, <Track: Track object (70)>, <Track: Track object (71)>, <Track: Track object (72)>, <Track: Track object (75)>, <Track: Track object (76)>, <Track: Track object (123)>, <Track: Track object (124)>, <Track: Track object (126)>, <Track: Track object (127)>, <Track: Track object (128)>, <Track: Track object (129)>, <Track: Track object (130)>, <Track: Track object (74)>, <Track: Track object (456)>, '...(remaining elements truncated)...']>
+
+Find the track "My Time After Awhile" and then use the track/genre relationship to find its genre.
+
+In [13]: Track.objects.filter(name__icontains="My time after awhile").first().genre.name                                                                                                                       
+Out[13]: 'Blues'
+
+
+Now find the media type of that same track.
+
+In [15]: Track.objects.filter(name__icontains="My time after awhile").first().media_type.name                                                                                                                  
+Out[15]: 'MPEG audio file'
+
+And finally, find the album that track appears on.
+
+In [17]: Track.objects.filter(name__icontains="My time after awhile").first().album.title                                                                                                                      
+Out[17]: 'Afrociberdelia'
+
